@@ -1,3 +1,70 @@
 body {
     font-family: 'Nunito', sans-serif;
 }
+h1 {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 40px;
+    margin: 20px 0 10px;
+    padding-bottom: 0px;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding:0;
+}
+form {
+    margin-top: 40px;
+    padding-bottom: 30px;
+  }
+footer, .col {
+    text-align: center;
+}
+.col {
+    flex: 1 0;
+    padding: 60px 12px 10px 12px; 
+}
+.col-9 {
+    flex: 0 0 auto;
+    width: 75%;
+}
+.high-low-temp {
+    font-size: 20px;
+    text-align: center;
+    font-weight: 300;
+    padding-top: 5px;
+    padding-right: 70px;
+}
+.form-style {
+    flex: 0 0 auto;
+    width: 75%;
+    line-height: 32px;
+    border-radius: 4px;
+  }
+.row {
+    max-width: 100%;
+}
+
+.top-right-col {
+    color: #212121;
+    font-size: 50px;
+    font-weight: 400;
+    font-weight: 700;
+    line-height: 1;
+}
+.weather-app {
+    max-width: 800px;
+    margin: 60px auto;
+    border: 1px solid #6c6a70;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 30px 50px rgba(65,50,100,.08);
+    background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+.weather-container {
+    align-items: center;
+    margin-top: 30px;
+    
+}
+
+
