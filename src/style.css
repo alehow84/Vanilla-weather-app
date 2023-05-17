@@ -77,5 +77,6 @@ footer, .col {
     padding-bottom: 70px;
     padding-top: 40px;
 }
-
-
+#current-description {
+    text-transform: capitalize;
+}
