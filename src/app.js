@@ -1,3 +1,22 @@
+//function to format the date
+function formatDate(date) {
+    let days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+  
+    let day = days[date.getDay()];
+    let hours = String(date.getHours()).padStart(2, `0`);
+    let minutes = String(date.getMinutes()).padStart(2, `0`);
+    let time = `${hours}:${minutes}`;
+    return `${day} ${time}`;
+  }
+
 //function to amend weather stats
 function showWeather(response) {
     document.querySelector("#city").innerHTML = response.data.city;
@@ -5,6 +24,9 @@ function showWeather(response) {
     document.querySelector("#current-description").innerHTML = response.data.condition.description;
     document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
     document.querySelector("#humidity").innerHTML = response.data.temperature.humidity;
+    let today = new Date(response.data.time * 1000);
+    console.log(new Date(response.data.time));
+    let now = document.querySelector("#current-day").innerHTML = formatDate(today);
 }
 
 
