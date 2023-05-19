@@ -25,12 +25,14 @@ function showWeather(response) {
     document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
     document.querySelector("#humidity").innerHTML = response.data.temperature.humidity;
     let today = new Date(response.data.time * 1000);
-    console.log(new Date(response.data.time));
     let now = document.querySelector("#current-day").innerHTML = formatDate(today);
+    let iconElement = document.querySelector("#current-emoji");
+    iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
+    iconElement.setAttribute("alt", `${response.data.condition.icon}`);
 }
 
 
 let api = "aa56f014o9bf10caa03ebda1c6dfte85";
-let searchCity = "Tokyo";
+let searchCity = "Lisbon";
 let url = `https://api.shecodes.io/weather/v1/current?query=${searchCity}&key=${api}&units=metric`;
 axios.get(url).then(showWeather);
