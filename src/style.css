@@ -5,8 +5,12 @@ h1 {
     font-size: 42px;
     font-weight: 700;
     line-height: 40px;
-    margin: 20px 0 10px;
+    margin: 40px 0 10px;
     padding-bottom: 0px;
+}
+img {
+    height: 85px;
+    width: 85px;
 }
 ul {
     list-style: none;
@@ -31,30 +35,27 @@ footer, .col {
     flex: 1 0;
     padding: 10px 12px 10px 12px; 
 }
+.col-6 {
+    padding: 0px 0px 0px 35px;
+}
 .col-9 {
     flex: 0 0 auto;
     width: 75%;
 }
-.high-low-temp {
+.degrees {
+    font-size: 65px;
+}
+.temp-unit {
     font-size: 20px;
     text-align: center;
     font-weight: 300;
-    padding-top: 5px;
-    padding-right: 70px;
 }
-.form-style {
-    flex: 0 0 auto;
-    width: 75%;
-    line-height: 32px;
-    border-radius: 4px;
-  }
 .row {
     max-width: 100%;
 }
 
 .top-right-col {
     color: #212121;
-    font-size: 50px;
     font-weight: 400;
     font-weight: 700;
     line-height: 1;
@@ -70,7 +71,7 @@ footer, .col {
 }
 .weather-container {
     align-items: center;
-    margin-top: 30px;
+    margin-top: 55px;
     
 }
 .weatherDeets {

@@ -30,9 +30,19 @@ function showWeather(response) {
     iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
     iconElement.setAttribute("alt", `${response.data.condition.icon}`);
 }
+//amends url then instructs to run function to amend weather stats
+function searchCity(city) {
+    let api = "aa56f014o9bf10caa03ebda1c6dfte85";
+    let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${api}&units=metric`;
+    axios.get(url).then(showWeather);
+}
+//runs searchCity function based on the value of the users input
+function submitCity(event) {
+    event.preventDefault();
+    let userInput = document.querySelector("#user-input").value;
+    searchCity(userInput);
+}
+let userSubmit = document.querySelector("#user-submit");
+userSubmit.addEventListener("submit", submitCity);
 
-
-let api = "aa56f014o9bf10caa03ebda1c6dfte85";
-let searchCity = "Lisbon";
-let url = `https://api.shecodes.io/weather/v1/current?query=${searchCity}&key=${api}&units=metric`;
-axios.get(url).then(showWeather);
+searchCity("Tokyo");
