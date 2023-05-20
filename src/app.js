@@ -33,6 +33,7 @@ function showWeather(response) {
 }
 //amends url then instructs to run function to amend weather stats
 function searchCity(city) {
+    celsius.classList.add("active");
     let api = "aa56f014o9bf10caa03ebda1c6dfte85";
     let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${api}&units=metric`;
     axios.get(url).then(showWeather);
