@@ -19,8 +19,9 @@ function formatDate(date) {
 
 //function to amend weather stats
 function showWeather(response) {
+    celsiusTemp = Math.round(response.data.temperature.current);
     document.querySelector("#city").innerHTML = response.data.city;
-    document.querySelector("#current-temp").innerHTML = Math.round(response.data.temperature.current);
+    document.querySelector("#current-temp").innerHTML = celsiusTemp;
     document.querySelector("#current-description").innerHTML = response.data.condition.description;
     document.querySelector("#wind").innerHTML = Math.round(response.data.wind.speed);
     document.querySelector("#humidity").innerHTML = response.data.temperature.humidity;
@@ -44,5 +45,28 @@ function submitCity(event) {
 }
 let userSubmit = document.querySelector("#user-submit");
 userSubmit.addEventListener("submit", submitCity);
+
+
+function showFarenheit(event) {
+    event.preventDefault();
+    celsius.classList.remove("active");
+    farenheit.classList.add("active");
+    document.querySelector("#current-temp").innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
+}
+
+function showCelsius(event) {
+    event.preventDefault();
+    celsius.classList.add("active");
+    farenheit.classList.remove("active");
+    document.querySelector("#current-temp").innerHTML = celsiusTemp;
+}
+
+let celsiusTemp = null;
+
+let farenheit = document.querySelector("#farenheit");
+farenheit.addEventListener("click", showFarenheit);
+
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", showCelsius);
 
 searchCity("Tokyo");
