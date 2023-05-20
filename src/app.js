@@ -40,6 +40,7 @@ function searchCity(city) {
 //runs searchCity function based on the value of the users input
 function submitCity(event) {
     event.preventDefault();
+    farenheit.classList.remove("active");
     let userInput = document.querySelector("#user-input").value;
     searchCity(userInput);
 }
