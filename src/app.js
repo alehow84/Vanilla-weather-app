@@ -31,6 +31,29 @@ function showWeather(response) {
     iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
     iconElement.setAttribute("alt", `${response.data.condition.icon}`);
 }
+//function to display forecast
+function displayForecast() {
+    let forecastRow = document.querySelector("#forecast");
+    let forecastHtml = `<div class="futureWeather row>"`;
+    let days = ["Sat", "Sun", "Mon", "Tues", "Weds"];
+    days.forEach(function (day) {
+        forecastHtml = forecastHtml + `<div class="col">
+    <div class="forecastPreview">
+        <div class="forecast-day">${day}</div>
+        <div>
+            <img src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png" alt="" id="forecast-emoji-0" class="forecast-emoji" width="50">
+        </div>
+        <div class="forecastTemp">
+            <span class="forecast-temp-max">15</span>° | 
+            <span class="forecast-temp-min">8</span>° 
+        </div>
+    </div>
+</div>`;
+
+    }),
+forecastHtml = forecastHtml + `</div>`;
+forecastRow.innerHTML = forecastHtml;
+}
 //amends url then instructs to run function to amend weather stats
 function searchCity(city) {
     celsius.classList.add("active");
@@ -72,3 +95,4 @@ let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", showCelsius);
 
 searchCity("Tokyo");
+displayForecast();
