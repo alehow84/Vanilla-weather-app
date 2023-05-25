@@ -17,6 +17,13 @@ function formatDate(date) {
     return `${day} ${time}`;
   }
 
+//function to call forecast api
+function searchForecast(city) {
+    let api = "aa56f014o9bf10caa03ebda1c6dfte85";
+    let url = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${api}&units=metric`;
+    axios.get(url).then(displayForecast);
+}
+
 //function to amend weather stats
 function showWeather(response) {
     celsiusTemp = Math.round(response.data.temperature.current);
@@ -30,9 +37,12 @@ function showWeather(response) {
     let iconElement = document.querySelector("#current-emoji");
     iconElement.setAttribute("src", `${response.data.condition.icon_url}`);
     iconElement.setAttribute("alt", `${response.data.condition.icon}`);
+
+    searchForecast(response.data.city);
 }
 //function to display forecast
-function displayForecast() {
+function displayForecast(response) {
+    console.log(response.data.daily);
     let forecastRow = document.querySelector("#forecast");
     let forecastHtml = `<div class="futureWeather row>"`;
     let days = ["Sat", "Sun", "Mon", "Tues", "Weds"];
@@ -95,4 +105,3 @@ let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", showCelsius);
 
 searchCity("Tokyo");
-displayForecast();
