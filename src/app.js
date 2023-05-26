@@ -17,6 +17,44 @@ function formatDate(date) {
     return `${day} ${time}`;
   }
 
+//function to format forcast day timestamp
+function formatDay(timestamp) {
+    let date = new Date(timestamp * 1000);
+    let days = ["Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",];
+    let day = days[date.getDay()];
+    return `${day}`;
+}
+
+//function to display forecast
+function displayForecast(response) {
+    console.log(response.data.daily[0]);
+    let day = response.data.daily;
+    let forecastRow = document.querySelector("#forecast");
+    let forecastHtml = `<div class="futureWeather row>"`;
+    day.forEach(function (forecastDay, index) {
+        if (index < 5) {
+        forecastHtml = forecastHtml + `<div class="col">
+    <div class="forecastPreview">
+        <div class="forecast-day">${formatDay(forecastDay.time)}</div>
+        <div>
+            <img src="${forecastDay.condition.icon_url}" alt="" id="forecast-emoji-0" class="forecast-emoji" width="50">
+        </div>
+        <div class="forecastTemp">
+            <span class="forecast-temp-max">${Math.round(forecastDay.temperature.maximum)}</span>° | 
+            <span class="forecast-temp-min">${Math.round(forecastDay.temperature.minimum)}</span>° 
+        </div>
+    </div>
+</div>`;
+}}),
+forecastHtml = forecastHtml + `</div>`;
+forecastRow.innerHTML = forecastHtml;
+}
 //function to call forecast api
 function searchForecast(city) {
     let api = "aa56f014o9bf10caa03ebda1c6dfte85";
@@ -40,30 +78,7 @@ function showWeather(response) {
 
     searchForecast(response.data.city);
 }
-//function to display forecast
-function displayForecast(response) {
-    console.log(response.data.daily);
-    let forecastRow = document.querySelector("#forecast");
-    let forecastHtml = `<div class="futureWeather row>"`;
-    let days = ["Sat", "Sun", "Mon", "Tues", "Weds"];
-    days.forEach(function (day) {
-        forecastHtml = forecastHtml + `<div class="col">
-    <div class="forecastPreview">
-        <div class="forecast-day">${day}</div>
-        <div>
-            <img src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png" alt="" id="forecast-emoji-0" class="forecast-emoji" width="50">
-        </div>
-        <div class="forecastTemp">
-            <span class="forecast-temp-max">15</span>° | 
-            <span class="forecast-temp-min">8</span>° 
-        </div>
-    </div>
-</div>`;
 
-    }),
-forecastHtml = forecastHtml + `</div>`;
-forecastRow.innerHTML = forecastHtml;
-}
 //amends url then instructs to run function to amend weather stats
 function searchCity(city) {
     celsius.classList.add("active");
