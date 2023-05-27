@@ -37,7 +37,7 @@ function displayForecast(response) {
     let forecastRow = document.querySelector("#forecast");
     let forecastHtml = `<div class="futureWeather row">`;
     day.forEach(function (forecastDay, index) {
-      if (index > 0 && index < 6) {
+      if (index < 5) {
         forecastHtml =
           forecastHtml +
           `<div class="col">
@@ -89,7 +89,6 @@ function showWeather(response) {
 
 //amends url then instructs to run function to amend weather stats
 function searchCity(city) {
-    celsius.classList.add("active");
     let api = "aa56f014o9bf10caa03ebda1c6dfte85";
     let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${api}&units=metric`;
     axios.get(url).then(showWeather);
@@ -97,34 +96,11 @@ function searchCity(city) {
 //runs searchCity function based on the value of the users input
 function submitCity(event) {
     event.preventDefault();
-    farenheit.classList.remove("active");
     let userInput = document.querySelector("#user-input").value;
     searchCity(userInput);
 }
 let userSubmit = document.querySelector("#user-submit");
 userSubmit.addEventListener("submit", submitCity);
 
-
-function showFarenheit(event) {
-    event.preventDefault();
-    celsius.classList.remove("active");
-    farenheit.classList.add("active");
-    document.querySelector("#current-temp").innerHTML = Math.round((celsiusTemp * 9) / 5 + 32);
-}
-
-function showCelsius(event) {
-    event.preventDefault();
-    celsius.classList.add("active");
-    farenheit.classList.remove("active");
-    document.querySelector("#current-temp").innerHTML = celsiusTemp;
-}
-
-let celsiusTemp = null;
-
-let farenheit = document.querySelector("#farenheit");
-farenheit.addEventListener("click", showFarenheit);
-
-let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", showCelsius);
 
 searchCity("Tokyo");
