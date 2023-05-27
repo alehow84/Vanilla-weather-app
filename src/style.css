@@ -36,7 +36,7 @@ footer, .col {
 }
 .col {
     flex: 1 0;
-    padding: 10px 12px 10px 12px; 
+    padding: 10px 12px; 
 }
 .col-6 {
     padding: 0px 0px 0px 35px;

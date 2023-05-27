@@ -33,28 +33,36 @@ function formatDay(timestamp) {
 
 //function to display forecast
 function displayForecast(response) {
-    console.log(response.data.daily[0]);
     let day = response.data.daily;
     let forecastRow = document.querySelector("#forecast");
-    let forecastHtml = `<div class="futureWeather row>"`;
+    let forecastHtml = `<div class="futureWeather row">`;
     day.forEach(function (forecastDay, index) {
-        if (index > 0 && index < 6) {
-        forecastHtml = forecastHtml + `<div class="col">
-    <div class="forecastPreview">
-        <div class="forecast-day">${formatDay(forecastDay.time)}</div>
-        <div>
-            <img src="${forecastDay.condition.icon_url}" alt="" id="forecast-emoji-0" class="forecast-emoji" width="50">
-        </div>
-        <div class="forecastTemp">
-            <span class="forecast-temp-max">${Math.round(forecastDay.temperature.maximum)}</span>° | 
-            <span class="forecast-temp-min">${Math.round(forecastDay.temperature.minimum)}</span>° 
-        </div>
-    </div>
-</div>`;
-}}),
-forecastHtml = forecastHtml + `</div>`;
-forecastRow.innerHTML = forecastHtml;
-}
+      if (index > 0 && index < 6) {
+        forecastHtml =
+          forecastHtml +
+          `<div class="col">
+      <div class="forecastPreview">
+          <div class="forecast-day">${formatDay(forecastDay.time)}</div>
+          <div>
+              <img src="${
+                forecastDay.condition.icon_url
+              }" alt="" id="forecast-emoji-0" class="forecast-emoji" width="50">
+          </div>
+          <div class="forecastTemp">
+              <span class="forecast-temp-max">${Math.round(
+                forecastDay.temperature.maximum
+              )}</span>° | 
+              <span class="forecast-temp-min">${Math.round(
+                forecastDay.temperature.minimum
+              )}</span>° 
+          </div>
+      </div>
+  </div>`;
+      }
+    }),
+      (forecastHtml = forecastHtml + `</div>`);
+    forecastRow.innerHTML = forecastHtml;
+  }
 //function to call forecast api
 function searchForecast(city) {
     let api = "aa56f014o9bf10caa03ebda1c6dfte85";
