@@ -1,6 +1,6 @@
 #Vanilla JS Weather App 🌞#
 
-##Overview##
+Overview
 
 This is the second project I completed with [SheCodes](https://www.shecodes.io/) front-end development workshop.
 
